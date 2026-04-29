@@ -9,7 +9,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    final String fileName = "pokemons.txt";
+    final String pokemonsFile = "pokemons.txt";
+    static final String usersFile = "users.txt";
 
     private Trainer trainer;
     private Scanner sc = new Scanner(System.in);
@@ -19,7 +20,9 @@ public class Game {
 
     }
 
-    public void processOption(int option) {}
+    public void processOption(int option) {
+
+    }
 
     public void saveGame() {}
 
@@ -29,13 +32,13 @@ public class Game {
 
     private List<Pokemon> loadPokemons() {
         List<Pokemon> pokemons = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(pokemonsFile))) {
             String line;
 
             while ((line = br.readLine()) != null) {
                 String[] fullLine = line.split(",");
 
-                if (fullLine[0].equals("001")) {
+                if (!fullLine[0].equals("Number")) {
                     String name =  fullLine[1];
                     String typeText =  fullLine[3];
 
@@ -46,8 +49,8 @@ public class Game {
                     int defense = Integer.parseInt(fullLine[10]);
 
                     Random rand = new Random();
-
-                    Pokemon p = new Pokemon(name, type, rand.nextInt(1, 5), HP, HP, attack, defense, 0);
+                    int level = rand.nextInt(5);
+                    Pokemon p = new Pokemon(name, type, level, HP, HP, attack, defense, 0);
 
                     pokemons.add(p);
                 }
@@ -61,5 +64,31 @@ public class Game {
         }
 
         return pokemons;
+    }
+
+    public static boolean validateLogin(String username, String password) {
+        File file = new File(usersFile);
+
+        boolean result = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] fullLine = line.split(",");
+
+                if (fullLine[0].equals(username) && fullLine[1].equals(password)) {
+                    result = true;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }
