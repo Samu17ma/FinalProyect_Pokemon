@@ -16,5 +16,16 @@ public class Pokemon {
     private List<Attack> attacks;
     private List<Status> statuses;
 
-
+    public Pokemon(String name, Type type, int level, int hp, int maxHp, int attack, int defense, int experience, List<Attack> attacks, List<Status> statuses) {
+        this.name = name;
+        this.type = type;
+        this.level = level;
+        this.hp = hp;
+        this.maxHp = maxHp;
+        this.attack = attack;
+        this.defense = defense;
+        this.experience = experience;
+        this.attacks = attacks;
+        this.statuses = statuses;
+    }
 }
