@@ -26,9 +26,7 @@ public class LogInController {
 
         if (user.isEmpty() || pass.isEmpty()) {
             lbl_message.setText("Cannot login without user or password");
-        }
-
-        if (Game.validateLogin(user, pass)) {
+        } else if (Game.validateLogin(user, pass)) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
