@@ -77,15 +77,17 @@ public class Game {
             while ((line = br.readLine()) != null) {
                 String[] fullLine = line.split(",");
 
-                if (fullLine[0].equals(username) && fullLine[1].equals(password)) {
-                    result = true;
+                if (fullLine.length >= 2) {
+                    if (fullLine[0].equals(username) && fullLine[1].equals(password)) {
+                        result = true;
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
+            System.err.println("File was not found: " + usersFile);
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
+            System.err.println("Error reading file.");
             e.printStackTrace();
         }
 
