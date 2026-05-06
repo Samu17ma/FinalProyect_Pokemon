@@ -27,7 +27,7 @@ public class LogInController {
         if (Game.validateLogin(user, pass)) {
             System.out.printf("Trying to login with [" + user + "] ...");
         } else if (user.isEmpty() || pass.isEmpty()) {
-            lbl_message.setText("Incorrect username or password");
+            lbl_message.setText("Incorrect username or password, maybe it's empty.");
         } else  {
             lbl_message.setText("Login successful");
             // Aquí se le manda al menu principal
