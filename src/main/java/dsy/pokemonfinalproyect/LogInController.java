@@ -24,13 +24,26 @@ public class LogInController {
         String user = txt_user.getText();
         String pass = txt_password.getText();
 
+        if (user.isEmpty() || pass.isEmpty()) {
+            lbl_message.setText("Cannot login without user or password");
+        }
+
         if (Game.validateLogin(user, pass)) {
-            System.out.printf("Trying to login with [" + user + "] ...");
-        } else if (user.isEmpty() || pass.isEmpty()) {
-            lbl_message.setText("Incorrect username or password, maybe it's empty.");
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+
+                Stage stage = (Stage) txt_user.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                lbl_message.setText("Error loading the next screen. Please try again");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else  {
-            lbl_message.setText("Login successful");
-            // Aquí se le manda al menu principal
+            lbl_message.setText("Incorrect username or password");
         }
     }
 

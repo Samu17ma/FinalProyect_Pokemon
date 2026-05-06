@@ -17,8 +17,8 @@
             <Font name="Times New Roman Bold" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="btn_logIn" contentDisplay="CENTER" layoutX="616.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleEnter" text="Log in" />
+      <Button fx:id="btn_logIn" contentDisplay="CENTER" layoutX="611.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleEnter" text="Log in" />
       <Button fx:id="txt_goBack" layoutX="14.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleBack" text="Go Back" />
-      <Label fx:id="lbl_message" layoutX="628.0" layoutY="376.0" />
+      <Label fx:id="lbl_message" layoutX="560.0" layoutY="368.0" prefHeight="26.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
