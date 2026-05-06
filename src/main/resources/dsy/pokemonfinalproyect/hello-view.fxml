@@ -24,10 +24,11 @@
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btn_sinup" mnemonicParsing="false" onAction="#signUp" text="Sign up" textAlignment="CENTER">
-         <font>
-            <Font name="Times New Roman" size="18.0" />
-         </font>
-      </Button>
+       <Button fx:id="btn_sinup" mnemonicParsing="false" text="Sign Up" onAction="#handleSignUp" textAlignment="CENTER">
+           <font>
+               <Font name="Times New Roman" size="18.0" />
+           </font>
+       </Button>
+
    </children>
 </VBox>

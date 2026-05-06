@@ -24,13 +24,21 @@ public class LogInController {
         String user = txt_user.getText();
         String pass = txt_password.getText();
 
-        if (Game.validateLogin(user, pass)) {
-            System.out.printf("Trying to login with [" + user + "] ...");
-        } else if (user.isEmpty() || pass.isEmpty()) {
+        // 1. Verificamos campos vacíos primero
+        if (user.isEmpty() || pass.isEmpty()) {
+            lbl_message.setText("Please fill all fields");
+        }
+        // 2. Validamos las credenciales usando la clase Game
+        else if (Game.validateLogin(user, pass)) {
+            lbl_message.setText("Login successful!");
+            System.out.println("Login correct: " + user);
+
+            // Aquí llamarías al método para cambiar al menú principal
+            // irAlMenuPrincipal();
+        }
+        // 3. Si no están vacíos y no es válido, entonces es incorrecto
+        else {
             lbl_message.setText("Incorrect username or password");
-        } else  {
-            lbl_message.setText("Login successful");
-            // Aquí se le manda al menu principal
         }
     }
 
