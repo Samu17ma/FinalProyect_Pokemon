@@ -31,6 +31,9 @@ public class LogInController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
+                MenuController menuController = fxmlLoader.getController();
+                menuController.setDisplayName("Trainer " + user);
+
                 Stage stage = (Stage) txt_user.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
