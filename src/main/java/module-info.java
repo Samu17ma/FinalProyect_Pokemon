@@ -6,4 +6,7 @@ module dsy.pokemonfinalproyect {
 
     opens dsy.pokemonfinalproyect to javafx.fxml;
     exports dsy.pokemonfinalproyect;
+
+    opens dsy.pokemonfinalproyect.shapes.types to javafx.base, javafx.fxml;
+    exports dsy.pokemonfinalproyect.shapes.types;
 }
