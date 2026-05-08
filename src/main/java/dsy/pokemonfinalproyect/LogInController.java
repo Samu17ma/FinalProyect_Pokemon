@@ -55,4 +55,5 @@ public class LogInController {
         Stage stage = (Stage) txt_user.getScene().getWindow();
         stage.setScene(scene);
     }
+
 }

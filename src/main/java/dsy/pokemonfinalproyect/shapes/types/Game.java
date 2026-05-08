@@ -14,7 +14,9 @@ public class Game {
 
     private Trainer trainer;
     private Scanner sc = new Scanner(System.in);
-    private List<Pokemon> pokemons;
+    private static List<Pokemon> pokemons;
+    public static List<Trainer> users = new ArrayList<>();
+    public static List<Pokemon> existingPokemons = new ArrayList<>();
 
     public void start() {
 
@@ -25,45 +27,49 @@ public class Game {
     }
 
     public void saveGame() {}
-
-    public void loadGame() {
-        pokemons = loadPokemons();
+    public static void loadGame() {
+        existingPokemons = loadPokemonsFromFile();
     }
 
-    private List<Pokemon> loadPokemons() {
-        List<Pokemon> pokemons = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(pokemonsFile))) {
+    public static List<Pokemon> loadPokemonsFromFile() {
+        List<Pokemon> pokemonList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("pokemons.txt"))) {
             String line;
+            br.readLine(); // Saltar la cabecera (Number, Name...)
 
             while ((line = br.readLine()) != null) {
-                String[] fullLine = line.split(",");
+                // Usamos una expresión regular para que no separe las comas dentro de comillas ""
+                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
-                if (!fullLine[0].equals("Number")) {
-                    String name =  fullLine[1];
-                    String typeText =  fullLine[3];
+                if (data.length >= 11) {
+                    try {
+                        String name = data[1].trim();
 
-                    Type type = Type.valueOf(typeText);
+                        // LIMPIEZA DEL TIPO: de "['grass', 'poison']" a "GRASS"
+                        String typeRaw = data[3].replace("[", "").replace("]", "").replace("'", "").replace("\"", "").trim();
+                        String firstType = typeRaw.split(",")[0].toUpperCase(); // Tomamos solo el primer tipo
 
-                    int HP = Integer.parseInt(fullLine[8]);
-                    int attack  = Integer.parseInt(fullLine[9]);
-                    int defense = Integer.parseInt(fullLine[10]);
+                        Type type = Type.valueOf(firstType);
 
-                    Random rand = new Random();
-                    int level = rand.nextInt(5);
-                    Pokemon p = new Pokemon(name, type, level, HP, HP, attack, defense, 0);
+                        int hp = Integer.parseInt(data[8].trim());
+                        int attack = Integer.parseInt(data[9].trim());
+                        int defense = Integer.parseInt(data[10].trim());
 
-                    pokemons.add(p);
+                        Random rand = new Random();
+                        int level = rand.nextInt(5) + 1;
+
+                        pokemonList.add(new Pokemon(name, type, level, hp, hp, attack, defense, 0));
+                    } catch (Exception e) {
+                        // Si un pokemon falla (como Mr. Mime), saltamos al siguiente
+                        continue;
+                    }
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Total cargados: " + pokemonList.size());
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
-        return pokemons;
+        return pokemonList;
     }
 
     public static boolean validateLogin(String username, String password) {
@@ -93,4 +99,15 @@ public class Game {
 
         return result;
     }
+    public static List<Trainer> user = new ArrayList<>();
+
+    public static void registerUserToFile(String username, String password) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("user.txt", true))) {
+            writer.write(username + ":" + password);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

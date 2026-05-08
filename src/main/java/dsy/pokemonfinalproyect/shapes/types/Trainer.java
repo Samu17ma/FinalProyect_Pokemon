@@ -9,7 +9,8 @@ public class Trainer {
     private List<Item> inventory;
 
     // Constructor: Obligatorio para crear al entrenador desde el Sign Up
-    public Trainer() {
+    public Trainer(String name) {
+        this.name = name; // Línea importante
         this.team = new ArrayList<>();
         this.inventory = new ArrayList<>();
     }

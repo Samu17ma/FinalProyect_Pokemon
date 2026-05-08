@@ -1,1 +1,1 @@
-Samuel,Samuel
+sam,1234,Charmander
