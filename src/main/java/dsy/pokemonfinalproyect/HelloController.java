@@ -43,7 +43,7 @@ public class HelloController {
     private void changeScene(String fxmlFile, String title) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Scene newScene = new Scene(loader.load());
+            Scene newScene = new Scene(loader.load(), 1280, 720);
 
             Stage stage = (Stage) btn_login.getScene().getWindow();
 

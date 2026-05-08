@@ -24,20 +24,23 @@ public class LogInController {
         String user = txt_user.getText();
         String pass = txt_password.getText();
 
-        // 1. Verificamos campos vacíos primero
         if (user.isEmpty() || pass.isEmpty()) {
-            lbl_message.setText("Please fill all fields");
-        }
-        // 2. Validamos las credenciales usando la clase Game
-        else if (Game.validateLogin(user, pass)) {
-            lbl_message.setText("Login successful!");
-            System.out.println("Login correct: " + user);
+            lbl_message.setText("Cannot login without user or password");
+        } else if (Game.validateLogin(user, pass)) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
 
-            // Aquí llamarías al método para cambiar al menú principal
-            // irAlMenuPrincipal();
-        }
-        // 3. Si no están vacíos y no es válido, entonces es incorrecto
-        else {
+                Stage stage = (Stage) txt_user.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                lbl_message.setText("Error loading the next screen. Please try again");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else  {
             lbl_message.setText("Incorrect username or password");
         }
     }
