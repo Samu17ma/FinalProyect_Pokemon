@@ -27,7 +27,6 @@ public class TeamController {
 
     @FXML
     public void initialize() {
-        // Limpiamos el grid antes de cargar para evitar duplicados
         grid_pokemons.getChildren().clear();
 
         if (Game.currentTrainer != null) {
@@ -36,7 +35,6 @@ public class TeamController {
             int col = 0;
             int row = 0;
 
-            // Siempre iteramos 6 veces para llenar los huecos vacíos si el equipo es menor
             for (int i = 0; i < 6; i++) {
                 HBox card;
                 if (i < team.size()) {
@@ -61,9 +59,8 @@ public class TeamController {
         card.setStyle("-fx-border-color: #CCCCCC; -fx-border-radius: 10; -fx-padding: 15; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
         card.setPrefHeight(120);
 
-        // Bloque Izquierdo: Nombre y Nivel
         VBox infoBox = new VBox(5);
-        infoBox.setMinWidth(160); // Espacio garantizado para el nombre
+        infoBox.setMinWidth(160);
         infoBox.setAlignment(Pos.CENTER_LEFT);
 
         Label lblName = new Label(p.getName().toUpperCase());
@@ -76,7 +73,6 @@ public class TeamController {
 
         infoBox.getChildren().addAll(lblName, lblLevel);
 
-        // Bloque Derecho: HP y Barra de vida
         VBox barBox = new VBox(8);
         barBox.setAlignment(Pos.CENTER_LEFT);
         HBox.setHgrow(barBox, Priority.ALWAYS);
@@ -90,7 +86,6 @@ public class TeamController {
         hpBar.setMaxWidth(Double.MAX_VALUE);
         hpBar.setPrefHeight(18);
 
-        // Color de la barra: Verde (puedes cambiarlo a rojo si progress < 0.2)
         hpBar.setStyle("-fx-accent: #2ecc71;");
 
         barBox.getChildren().addAll(lblHp, hpBar);
