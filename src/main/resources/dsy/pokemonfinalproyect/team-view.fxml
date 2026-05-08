@@ -38,61 +38,6 @@
                         <RowConstraints minHeight="120.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-
-                        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10; -fx-padding: 15; -fx-background-color: white; -fx-background-radius: 10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                            <children>
-                                <VBox alignment="CENTER_LEFT" prefWidth="150.0">
-                                    <children>
-                                        <Label text="Pikachu">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label text="Lv. 5" />
-                                    </children>
-                                </VBox>
-                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                                    <children>
-                                        <Label text="HP: 35/35" />
-                                        <ProgressBar maxWidth="Infinity" prefHeight="15.0" progress="1.0" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10; -fx-padding: 15; -fx-background-color: white; -fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                            <children>
-                                <VBox alignment="CENTER_LEFT" prefWidth="150.0">
-                                    <children>
-                                        <Label text="Charmander">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label text="Lv. 5" />
-                                    </children>
-                                </VBox>
-                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                                    <children>
-                                        <Label text="HP: 28/28" />
-                                        <ProgressBar maxWidth="Infinity" prefHeight="15.0" progress="1.0" />
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER" style="-fx-border-color: #DDDDDD; -fx-border-style: dashed; -fx-border-radius: 10; -fx-padding: 15;" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                            <children>
-                                <Label text="Empty Slot" textFill="#999999" />
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER" style="-fx-border-color: #DDDDDD; -fx-border-style: dashed; -fx-border-radius: 10; -fx-padding: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <children>
-                                <Label text="Empty Slot" textFill="#999999" />
-                            </children>
-                        </HBox>
-
                     </children>
                 </GridPane>
             </content>
