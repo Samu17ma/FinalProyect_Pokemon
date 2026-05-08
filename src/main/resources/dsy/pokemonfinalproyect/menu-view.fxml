@@ -29,6 +29,11 @@
                 <Font name="Times New Roman Bold" size="28.0" />
             </font>
         </Label>
+        <Label fx:id="lbl_pokemon" layoutX="100.0" layoutY="180.0" text="First pokemon -> ">
+            <font>
+                <Font name="Times New Roman" size="18.0" />
+            </font>
+        </Label>
 
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="100.0" layoutY="220.0" prefHeight="320.0" prefWidth="420.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;" vbarPolicy="AS_NEEDED">
             <content>

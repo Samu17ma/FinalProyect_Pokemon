@@ -6,36 +6,53 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="dsy.pokemonfinalproyect.SignUpController" style="-fx-background-color: #f0f0f0;">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<AnchorPane minHeight="720.0" minWidth="1280.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.SignUpController">
+    <children>
+        <Text layoutX="534.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer Registration" textAlignment="CENTER" AnchorPane.leftAnchor="534.0" AnchorPane.rightAnchor="443.0625" AnchorPane.topAnchor="129.919921875">
+            <font>
+                <Font name="Times New Roman Bold" size="36.0" />
+            </font>
+        </Text>
 
-    <Text text="Registro de Entrenador" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #333;"/>
 
-    <GridPane vgap="10" hgap="10" alignment="CENTER">
-        <Label text="Nombre de Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="usernameField" promptText="Tu nombre..." GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <VBox alignment="CENTER" layoutX="490.0" layoutY="220.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
 
-        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <PasswordField fx:id="passwordField" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <GridPane alignment="CENTER" hgap="15" vgap="15">
+                <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="usernameField" promptText="Your name..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Label text="Pokémon Inicial:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <ComboBox fx:id="pokemonChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    </GridPane>
+                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <PasswordField fx:id="passwordField" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button text="Registrarse" onAction="#onSignUpButtonClick"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
-        <Button text="Volver" onAction="#onBackButtonClick"
-                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
-    </HBox>
-</VBox>
+                <Label text="Starter Pokémon:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ComboBox fx:id="pokemonChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="15">
+                <Button onAction="#onSignUpButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Sign Up" />
+                <Button onAction="#onBackButtonClick" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Back" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

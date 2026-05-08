@@ -13,12 +13,9 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class LogInController {
-    @FXML
-    private TextField txt_user;
-    @FXML
-    private PasswordField txt_password;
-    @FXML
-    private Label lbl_message;
+    @FXML private TextField txt_user;
+    @FXML private PasswordField txt_password;
+    @FXML private Label lbl_message;
 
     public void handleEnter(ActionEvent actionEvent) {
         String user = txt_user.getText();
@@ -31,19 +28,13 @@ public class LogInController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
 
-                MenuController menuController = fxmlLoader.getController();
-                menuController.setDisplayName("Trainer " + user);
-
                 Stage stage = (Stage) txt_user.getScene().getWindow();
                 stage.setScene(scene);
-                stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
-                lbl_message.setText("Error loading the next screen. Please try again");
-            } catch (Exception e) {
-                e.printStackTrace();
+                lbl_message.setText("Error loading menu");
             }
-        } else  {
+        } else {
             lbl_message.setText("Incorrect username or password");
         }
     }
@@ -51,9 +42,7 @@ public class LogInController {
     public void handleBack(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
         Stage stage = (Stage) txt_user.getScene().getWindow();
         stage.setScene(scene);
     }
-
 }

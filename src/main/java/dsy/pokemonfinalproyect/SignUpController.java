@@ -14,7 +14,6 @@ import java.io.IOException;
 
 
 public class SignUpController {
-
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private ComboBox<String> pokemonChoice;
@@ -22,17 +21,11 @@ public class SignUpController {
     @FXML
     public void initialize() {
         Game.loadGame();
-        if (Game.existingPokemons.isEmpty()) {
-            Game.loadPokemonsFromFile();
-        }
-
         int count = 0;
         for (Pokemon p : Game.existingPokemons) {
             if (count < 3) {
                 pokemonChoice.getItems().add(p.getName());
                 count++;
-            } else {
-                break;
             }
         }
     }
@@ -44,18 +37,7 @@ public class SignUpController {
         String pName = pokemonChoice.getValue();
 
         if (!name.isEmpty() && !pass.isEmpty() && pName != null) {
-            Trainer newTrainer = new Trainer(name);
-
-            for (Pokemon p : Game.existingPokemons) {
-                if (p.getName().equals(pName)) {
-                    newTrainer.addPokemon(p);
-                    break;
-                }
-            }
-
-            Game.users.add(newTrainer);
-            Game.registerUserToFile(name, pass);
-
+            Game.registerUserToFile(name, pass, pName);
             onBackButtonClick(event);
         }
     }
@@ -67,8 +49,6 @@ public class SignUpController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
     }
 }

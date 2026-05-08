@@ -1,5 +1,6 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.types.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,9 @@ public class MenuController {
 
     @FXML
     private Button btn_Inventory;
+
+    @FXML
+    private Label lbl_pokemon;
 
     public void setDisplayName(String userName) {
         lbl_trainerId.setText(userName);
@@ -40,6 +44,21 @@ public class MenuController {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        if (Game.currentTrainer != null) {
+
+            lbl_trainerId.setText("Trainer: " + Game.currentTrainer.getName());
+
+            if (Game.currentTrainer.getTeam() != null && !Game.currentTrainer.getTeam().isEmpty()) {
+                String firstPokeName = Game.currentTrainer.getTeam().get(0).getName();
+                lbl_pokemon.setText("First pokemon -> " + firstPokeName);
+            } else {
+                lbl_pokemon.setText("First pokemon -> None");
+            }
         }
     }
 }

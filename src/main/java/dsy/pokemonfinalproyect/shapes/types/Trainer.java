@@ -15,6 +15,18 @@ public class Trainer {
         this.inventory = new ArrayList<>();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTeam(List<Pokemon> team) {
+        this.team = team;
+    }
+
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
+    }
+
     public void addPokemon(Pokemon pokemon) {
         if (this.team.size() < 6) { // Límite estándar de Pokémon
             this.team.add(pokemon);
