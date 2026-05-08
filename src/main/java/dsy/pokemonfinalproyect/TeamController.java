@@ -2,6 +2,9 @@ package dsy.pokemonfinalproyect;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
@@ -11,17 +14,32 @@ import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class TeamController {
+    @FXML
+    private Button txt_goBack;
 
     @FXML
     private GridPane grid_pokemons;
 
     @FXML
     public void handleBack(ActionEvent actionEvent) {
-        javafx.application.Platform.exit();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) txt_goBack.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setPokemonTem(List<Pokemon> team) {
