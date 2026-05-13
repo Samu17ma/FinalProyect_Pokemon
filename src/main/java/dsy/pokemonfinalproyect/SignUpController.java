@@ -21,12 +21,12 @@ public class SignUpController {
     @FXML
     public void initialize() {
         Game.loadGame();
-        int count = 0;
+        int count = 1;
         for (Pokemon p : Game.existingPokemons) {
-            if (count < 3) {
+            if (count == 1 || count == 4 || count == 7) {
                 pokemonChoice.getItems().add(p.getName());
-                count++;
             }
+            count++;
         }
     }
 
