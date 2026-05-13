@@ -25,7 +25,7 @@ public class Game {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                String[] data = line.split(",");
                 if (data.length >= 11) {
                     try {
                         String name = data[1].trim();
@@ -38,7 +38,9 @@ public class Game {
                         Random rand = new Random();
                         int level = rand.nextInt(5) + 1;
                         pokemonList.add(new Pokemon(name, type, level, hp, hp, attack, defense, 0));
-                    } catch (Exception e) { continue; }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         } catch (IOException e) { e.printStackTrace(); }
