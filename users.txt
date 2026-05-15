@@ -1,4 +1,5 @@
 Samuel,Samuel,Bulbasaur,Mew,Vaporeon
+hola,1234,Charmander
 a,a,Bulbasaur
 daniel,1234,Bulbasaur
 s,s,Charmeleon

@@ -6,6 +6,7 @@ import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -99,6 +100,19 @@ public class MenuController {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    protected void onOptionsButtonClick(ActionEvent event) {
+        try {
+            // This loads your setting layout when clicking the main menu Options button
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.err.println("Error changing window to option-view.fxml: " + e.getMessage());
             e.printStackTrace();
         }
     }

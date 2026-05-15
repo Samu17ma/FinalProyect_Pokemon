@@ -78,4 +78,5 @@ public class HelloController {
 
     public void signUp(ActionEvent actionEvent) {
     }
+
 }
