@@ -2,3 +2,6 @@ Samuel,Samuel,Bulbasaur,Mew,Vaporeon
 a,a,Bulbasaur
 daniel,1234,Bulbasaur
 s,s,Charmeleon
+Prueba1Caja,Prueba1Caja,Charmander
+PruebaCaja2,1,Charmander
+PruebaCaja3,1,Charmander

@@ -34,7 +34,7 @@ public class CreateTeamController {
         listTeam.setItems(teamItems);
 
         ObservableList<String> boxItems = FXCollections.observableArrayList();
-        for (Pokemon p : Game.existingPokemons) {
+        for (Pokemon p : Game.currentTrainer.getBox()) {
             if (!Game.currentTrainer.getTeam().contains(p)) {
                 boxItems.add(p.getName());
             }
@@ -69,7 +69,8 @@ public class CreateTeamController {
         int selectedIdx = listTeam.getSelectionModel().getSelectedIndex();
 
         if (selectedIdx != -1) {
-            Game.currentTrainer.getTeam().remove(selectedIdx);
+            Pokemon pokemonToMove = Game.currentTrainer.getTeam().get(selectedIdx);
+            Game.currentTrainer.moveToBox(pokemonToMove);
             refreshLists();
         }
     }

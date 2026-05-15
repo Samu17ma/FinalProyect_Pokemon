@@ -76,6 +76,27 @@ public class Game {
             e.printStackTrace();
         }
 
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(usersBoxes)))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 2 && data[0].equals(username) && data[1].equals(password)) {
+
+                    for (int i = 2; i < data.length; i++) {
+                        String pName = data[i];
+                        for (Pokemon p : existingPokemons) {
+                            if (p.getName().equalsIgnoreCase(pName)) {
+                                currentTrainer.addBox(p);
+                            }
+                        }
+                    }
+                    result = true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return result;
     }
 
@@ -88,7 +109,7 @@ public class Game {
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(usersBoxes, true))) {
-            writer.write(username + "," + "Caterpie");
+            writer.write(username + "," + password + "," + "Caterpie");
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
