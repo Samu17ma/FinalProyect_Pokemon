@@ -6,12 +6,14 @@ import java.util.List;
 public class Trainer {
     private String name;
     private List<Pokemon> team;
+    private List<Pokemon> box;
     private List<Item> inventory;
     private List<Pokemon> box;
 
     public Trainer(String name) {
         this.name = name;
         this.team = new ArrayList<>();
+        this.box = new ArrayList<>();
         this.inventory = new ArrayList<>();
         this.box = new ArrayList<>();
     }
@@ -36,10 +38,16 @@ public class Trainer {
         this.inventory = inventory;
     }
 
+    public void setBox(List<Pokemon> box) { this.box = box; }
+
     public void addPokemon(Pokemon pokemon) {
         if (this.team.size() < 6) {
             this.team.add(pokemon);
         }
+    }
+
+    public void addBox(Pokemon pokemon) {
+        this.box.add(pokemon);
     }
 
     public Pokemon choosePokemon(int index) {
