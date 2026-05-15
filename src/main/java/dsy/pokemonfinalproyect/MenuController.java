@@ -24,6 +24,9 @@ public class MenuController {
     @FXML
     private Label lbl_pokemon;
 
+    @FXML
+    private Button btn_CreateTeam;
+
     public void setDisplayName(String userName) {
         lbl_trainerId.setText(userName);
     }
@@ -60,5 +63,22 @@ public class MenuController {
                 lbl_pokemon.setText("First pokemon -> None");
             }
         }
+    }
+
+    @FXML
+    public void createTeam(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("createTeam-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startCombact(ActionEvent actionEvent) {
     }
 }

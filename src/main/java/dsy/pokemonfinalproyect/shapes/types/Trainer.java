@@ -7,12 +7,21 @@ public class Trainer {
     private String name;
     private List<Pokemon> team;
     private List<Item> inventory;
+    private List<Pokemon> box;
 
-    // Constructor: Obligatorio para crear al entrenador desde el Sign Up
     public Trainer(String name) {
-        this.name = name; // Línea importante
+        this.name = name;
         this.team = new ArrayList<>();
         this.inventory = new ArrayList<>();
+        this.box = new ArrayList<>();
+    }
+
+    public List<Pokemon> getBox() {
+        return box;
+    }
+
+    public void setBox(List<Pokemon> box) {
+        this.box = box;
     }
 
     public void setName(String name) {
@@ -28,7 +37,7 @@ public class Trainer {
     }
 
     public void addPokemon(Pokemon pokemon) {
-        if (this.team.size() < 6) { // Límite estándar de Pokémon
+        if (this.team.size() < 6) {
             this.team.add(pokemon);
         }
     }
@@ -42,7 +51,7 @@ public class Trainer {
 
     public void showTeam() {
         for (Pokemon p : team) {
-            System.out.println(p.toString()); // Asumiendo que Pokemon tiene toString[cite: 1]
+            System.out.println(p.toString());
         }
     }
 
@@ -53,13 +62,26 @@ public class Trainer {
     public void useItem(int itemIndex, int pokemonIndex) {
         if (itemIndex < inventory.size() && pokemonIndex < team.size()) {
             Item item = inventory.get(itemIndex);
-            // Lógica para aplicar el item al pokemon[cite: 1]
-            inventory.remove(itemIndex); // Se consume el objeto
+
+            inventory.remove(itemIndex);
         }
     }
 
-    // Getters: Necesarios para que la interfaz JavaFX pueda leer los datos[cite: 1]
     public String getName() { return name; }
     public List<Pokemon> getTeam() { return team; }
     public List<Item> getInventory() { return inventory; }
+
+    public void moveToTeam(Pokemon p) {
+        if (team.size() < 6 && box.contains(p)) {
+            box.remove(p);
+            team.add(p);
+        }
+    }
+
+    public void moveToBox(Pokemon p) {
+        if (team.contains(p)) {
+            team.remove(p);
+            box.add(p);
+        }
+    }
 }
