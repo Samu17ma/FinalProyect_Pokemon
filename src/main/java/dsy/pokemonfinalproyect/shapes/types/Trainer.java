@@ -6,7 +6,6 @@ import java.util.List;
 public class Trainer {
     private String name;
     private List<Pokemon> team;
-    private List<Pokemon> box;
     private List<Item> inventory;
     private List<Pokemon> box;
 
@@ -38,7 +37,6 @@ public class Trainer {
         this.inventory = inventory;
     }
 
-    public void setBox(List<Pokemon> box) { this.box = box; }
 
     public void addPokemon(Pokemon pokemon) {
         if (this.team.size() < 6) {
