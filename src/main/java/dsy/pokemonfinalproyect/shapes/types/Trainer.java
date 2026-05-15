@@ -8,12 +8,22 @@ public class Trainer {
     private List<Pokemon> team;
     private List<Pokemon> box;
     private List<Item> inventory;
+    private List<Pokemon> box;
 
     public Trainer(String name) {
         this.name = name;
         this.team = new ArrayList<>();
         this.box = new ArrayList<>();
         this.inventory = new ArrayList<>();
+        this.box = new ArrayList<>();
+    }
+
+    public List<Pokemon> getBox() {
+        return box;
+    }
+
+    public void setBox(List<Pokemon> box) {
+        this.box = box;
     }
 
     public void setName(String name) {
@@ -53,12 +63,6 @@ public class Trainer {
         }
     }
 
-    public void showBox() {
-        for (Pokemon p : box) {
-            System.out.println(p.toString());
-        }
-    }
-
     public void addItem(Item item) {
         this.inventory.add(item);
     }
@@ -66,6 +70,7 @@ public class Trainer {
     public void useItem(int itemIndex, int pokemonIndex) {
         if (itemIndex < inventory.size() && pokemonIndex < team.size()) {
             Item item = inventory.get(itemIndex);
+
             inventory.remove(itemIndex);
         }
     }
@@ -73,5 +78,18 @@ public class Trainer {
     public String getName() { return name; }
     public List<Pokemon> getTeam() { return team; }
     public List<Item> getInventory() { return inventory; }
-    public List<Pokemon> getBox() { return box; }
+
+    public void moveToTeam(Pokemon p) {
+        if (team.size() < 6 && box.contains(p)) {
+            box.remove(p);
+            team.add(p);
+        }
+    }
+
+    public void moveToBox(Pokemon p) {
+        if (team.contains(p)) {
+            team.remove(p);
+            box.add(p);
+        }
+    }
 }
