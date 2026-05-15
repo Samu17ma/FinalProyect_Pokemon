@@ -171,4 +171,15 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    public static Pokemon generateWildPokemon() {
+        Random rand = new Random();
+        Pokemon template = existingPokemons.get(rand.nextInt(existingPokemons.size()));
+
+        return new Pokemon(
+                template.getName(), template.getType(), 5,
+                template.getHp(), template.getMaxHp(),
+                template.getAttack(), template.getDefense(), 0
+        );
+    }
 }
