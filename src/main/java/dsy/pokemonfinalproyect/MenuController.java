@@ -1,6 +1,8 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.types.Battle;
 import dsy.pokemonfinalproyect.shapes.types.Game;
+import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,6 +81,25 @@ public class MenuController {
         }
     }
 
+    @FXML
     public void startCombact(ActionEvent actionEvent) {
+        Pokemon wild = Game.generateWildPokemon();
+
+        Pokemon myPoke = Game.currentTrainer.getTeam().get(0);
+
+        Battle currentBattle = new Battle(myPoke, wild);
+
+        // Charge Combact FXML
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("combact-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+
+            Stage stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
