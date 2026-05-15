@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Game {
     static final String usersFile = "users.txt";
+    static final String usersBoxes = "box.txt";
     public static List<Trainer> users = new ArrayList<>();
     public static List<Pokemon> existingPokemons = new ArrayList<>();
 
@@ -85,6 +86,13 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(usersBoxes, true))) {
+            writer.write(username + "," + "Caterpie");
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void saveCurrentTrainerState(String password) {
@@ -102,12 +110,38 @@ public class Game {
             e.printStackTrace();
         }
 
+        List<String> allBoxes = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(usersBoxes))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.startsWith(currentTrainer.getName() + ",")) {
+                    allBoxes.add(line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersFile))) {
             for (String u : allUsers) { bw.write(u); bw.newLine(); }
 
             StringBuilder sb = new StringBuilder();
             sb.append(currentTrainer.getName()).append(",").append(password);
             for (Pokemon p : currentTrainer.getTeam()) {
+                sb.append(",").append(p.getName());
+            }
+            bw.write(sb.toString());
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersBoxes))) {
+            for (String u : allBoxes) { bw.write(u); bw.newLine(); }
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(currentTrainer.getName()).append(",").append(password);
+            for (Pokemon p : currentTrainer.getBox()) {
                 sb.append(",").append(p.getName());
             }
             bw.write(sb.toString());
