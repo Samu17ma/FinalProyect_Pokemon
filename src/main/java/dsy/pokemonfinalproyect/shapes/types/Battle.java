@@ -20,7 +20,7 @@ public class Battle {
             System.out.println("¡" + playerActive.getName() + " makes " + damageToEnemy + " of damage!");
 
             if (enemy.getHp() <= 0) {
-                System.out.println("¡The enemy has been weakened!");
+                System.out.println("The enemy has been weakened!");
                 processVictory();
                 battleOver = true;
             } else {
@@ -32,7 +32,7 @@ public class Battle {
     private void enemyTurn() {
         int damageToPlayer = calculateDamage(enemy, playerActive);
         playerActive.setHp(playerActive.getHp() - damageToPlayer);
-        System.out.println("¡Enemy attacks! It takes from you " + damageToPlayer + " HP.");
+        System.out.println("Enemy attacks! It takes from you " + damageToPlayer + " HP.");
 
         if (playerActive.getHp() <= 0) {
             System.out.println("Your Pokemon has been weakened...!");
@@ -43,11 +43,11 @@ public class Battle {
     public boolean attemptEscape() {
         Random rand = new Random();
         if (rand.nextBoolean()) {
-            System.out.println("¡You escaped safely!");
+            System.out.println("You escaped safely!");
             battleOver = true;
             return true;
         }
-        System.out.println("¡You couldn't escape!");
+        System.out.println("You couldn't escape!");
         enemyTurn();
         return false;
     }

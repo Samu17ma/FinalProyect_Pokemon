@@ -156,7 +156,7 @@ public class Game {
         Pokemon template = existingPokemons.get(rand.nextInt(existingPokemons.size()));
 
         return new Pokemon(
-                template.getName(), template.getType(), rand.nextInt(3, 10),
+                template.getName(), template.getType(), 5,
                 template.getHp(), template.getMaxHp(),
                 template.getAttack(), template.getDefense(), 0
         );
