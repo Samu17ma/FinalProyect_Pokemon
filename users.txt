@@ -1,4 +1,3 @@
-Samuel,Samuel,Bulbasaur,Mew,Vaporeon
 hola,1234,Charmander
 a,a,Bulbasaur
 daniel,1234,Bulbasaur
@@ -8,3 +7,4 @@ PruebaCaja2,1,Charmander
 PruebaCaja3,1,Charmander
 PruebaCaja3,1,Charmander
 PruebaCaja4,1,Caterpie
+Samuel,2006,Mew,Vaporeon
