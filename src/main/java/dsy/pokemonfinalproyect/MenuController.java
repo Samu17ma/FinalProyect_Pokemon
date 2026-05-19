@@ -116,4 +116,18 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void saveTrainer(ActionEvent event) {
+        try {
+            // This loads your setting layout when clicking the main menu Options button
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveTrainer-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.err.println("Error changing window to option-view.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

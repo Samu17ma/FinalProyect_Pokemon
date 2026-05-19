@@ -51,7 +51,7 @@ public class CreateTeamController {
             if (Game.currentTrainer.getTeam().size() < 6) {
                 for (Pokemon p : Game.existingPokemons) {
                     if (p.getName().equals(selectedName)) {
-                        Game.currentTrainer.addPokemon(p);
+                        Game.currentTrainer.moveToTeam(p);
                         break;
                     }
                 }
