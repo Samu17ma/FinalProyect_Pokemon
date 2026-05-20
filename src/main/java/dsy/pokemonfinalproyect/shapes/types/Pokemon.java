@@ -109,4 +109,16 @@ public class Pokemon {
     public void setStatuses(List<Status> statuses) {
         this.statuses = statuses;
     }
+
+    public void attackPokemon(Pokemon objetive) {
+        objetive.setHp(objetive.getHp()-(attack*level)/defense);
+    }
+
+    public void healPokemon(int cant) {
+        hp = hp+cant+level;
+
+        if(hp>maxHp) {
+            hp=maxHp;
+        }
+    }
 }
