@@ -7,4 +7,4 @@ PruebaCaja2,1,Charmander
 PruebaCaja3,1,Charmander
 PruebaCaja3,1,Charmander
 PruebaCaja4,1,Caterpie
-Samuel,2006,Mew,Vaporeon
+Samuel,Samuel,Mew,Vaporeon

@@ -19,8 +19,8 @@ import java.io.IOException;
 
 public class SaveControler {
     public PasswordField passwordFieldSave;
-    @FXML
-    private Button btn_saveButton;
+    @FXML private Button btn_saveButton;
+    @FXML private Button btn_goBack;
 
     @FXML
     private void onSaveButtonClick(ActionEvent event) {
@@ -33,6 +33,17 @@ public class SaveControler {
             Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleBack(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) btn_saveButton.getScene().getWindow();
+            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
