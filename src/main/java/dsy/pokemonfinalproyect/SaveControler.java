@@ -1,31 +1,40 @@
 package dsy.pokemonfinalproyect;
 
 import dsy.pokemonfinalproyect.shapes.types.Game;
-import dsy.pokemonfinalproyect.shapes.types.Pokemon;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import dsy.pokemonfinalproyect.shapes.types.Trainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 
 public class SaveControler {
     public PasswordField passwordFieldSave;
-    @FXML private Button btn_saveButton;
-    @FXML private Button btn_goBack;
+    @FXML private Button btn_dontSave;
 
     @FXML
     private void onSaveButtonClick(ActionEvent event) {
-        String password = passwordFieldSave.getText();
-        Game.saveCurrentTrainerState(password);
+        try (BufferedReader br = new BufferedReader(new FileReader("users.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+
+                if (data[0].equals(Game.currentTrainer.getName())) {
+                    Game.saveCurrentTrainerState(data[1]);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -42,7 +51,7 @@ public class SaveControler {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) btn_saveButton.getScene().getWindow();
+            Stage stage = (Stage) btn_dontSave.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

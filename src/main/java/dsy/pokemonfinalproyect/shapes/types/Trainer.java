@@ -14,15 +14,6 @@ public class Trainer {
         this.team = new ArrayList<>();
         this.box = new ArrayList<>();
         this.inventory = new ArrayList<>();
-        this.box = new ArrayList<>();
-    }
-
-    public List<Pokemon> getBox() {
-        return box;
-    }
-
-    public void setBox(List<Pokemon> box) {
-        this.box = box;
     }
 
     public void setName(String name) {
@@ -37,6 +28,13 @@ public class Trainer {
         this.inventory = inventory;
     }
 
+    public List<Pokemon> getBox() {
+        return box;
+    }
+
+    public void setBox(List<Pokemon> box) {
+        this.box = box;
+    }
 
     public void addPokemon(Pokemon pokemon) {
         if (this.team.size() < 6) {
@@ -73,7 +71,7 @@ public class Trainer {
         }
     }
 
-    public String getName() { return name; }
+    public String getName() { return this.name; }
     public List<Pokemon> getTeam() { return team; }
     public List<Item> getInventory() { return inventory; }
 
