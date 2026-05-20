@@ -41,7 +41,7 @@
                     <children>
                         <Button fx:id="btn_Combact" layoutX="10.0" layoutY="10.0" maxWidth="Infinity" onAction="#startCombact" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="Combact" />
                         <Button fx:id="btn_CreateTeam" maxWidth="Infinity" onAction="#createTeam" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="Create Team" />
-                        <Button fx:id="bn_ViewTeam" maxWidth="Infinity" onAction="#handleViewTeam" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="View Team" />
+                        <Button fx:id="btn_ViewTeam" maxWidth="Infinity" onAction="#handleViewTeam" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="View Team" />
                         <Button fx:id="btn_Inventory" maxWidth="Infinity" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="Inventory" />
                         <Button fx:id="btn_SaveGame" maxWidth="Infinity" onAction="#saveTrainer" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="Save Game" />
                         <Button fx:id="btn_Options" maxWidth="Infinity" onAction="#onOptionsButtonClick" prefHeight="45.0" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18;" text="Options" />

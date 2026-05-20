@@ -22,6 +22,8 @@ public class Game {
 
     public static List<Pokemon> loadPokemonsFromFile() {
         List<Pokemon> pokemonList = new ArrayList<>();
+        existingPokemons.clear();
+
         try (BufferedReader br = new BufferedReader(new FileReader("pokemons.txt"))) {
             String line;
             br.readLine();
@@ -59,7 +61,7 @@ public class Game {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length >= 2 && data[0].equals(username) && data[1].equals(password)) {
-                    currentTrainer = new Trainer(username);
+                    currentTrainer = new Trainer(username, password);
 
                     for (int i = 2; i < data.length; i++) {
                         String pName = data[i];
@@ -101,22 +103,47 @@ public class Game {
     }
 
     public static void registerUserToFile(String username, String password, String firstPokemon) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(usersFile, true))) {
-            writer.write(username + "," + password + "," + firstPokemon);
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        File file = new File(usersFile);
+        String finalUsername = username;
+
+        if (file.exists()) {
+            List<String> existingUsers = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] data = line.split(",");
+                    if (data.length > 0) {
+                        existingUsers.add(data[0]);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (existingUsers.contains(finalUsername)) {
+                int count = 1;
+                while (existingUsers.contains(username + count)) {
+                    count++;
+                }
+                finalUsername = username + count;
+            }
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(usersBoxes, true))) {
-            writer.write(username + "," + password + "," + "Caterpie");
-            writer.newLine();
+        try (BufferedWriter userWriter = new BufferedWriter(new FileWriter(usersFile, true));
+             BufferedWriter boxWriter = new BufferedWriter(new FileWriter(usersBoxes, true))) {
+
+            userWriter.write(finalUsername + "," + password + "," + firstPokemon);
+            userWriter.newLine();
+
+            boxWriter.write(finalUsername + "," + password + "," + "Caterpie");
+            boxWriter.newLine();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void saveCurrentTrainerState(String password) {
+    public static void saveCurrentTrainerState() {
         if (currentTrainer == null) return;
 
         List<String> allUsers = new ArrayList<>();
@@ -144,10 +171,13 @@ public class Game {
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersFile))) {
-            for (String u : allUsers) { bw.write(u); bw.newLine(); }
+            for (String u : allUsers) {
+                bw.write(u);
+                bw.newLine();
+            }
 
             StringBuilder sb = new StringBuilder();
-            sb.append(currentTrainer.getName()).append(",").append(password);
+            sb.append(currentTrainer.getName()).append(",").append(currentTrainer.getPassword());
             for (Pokemon p : currentTrainer.getTeam()) {
                 sb.append(",").append(p.getName());
             }
@@ -158,10 +188,13 @@ public class Game {
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersBoxes))) {
-            for (String u : allBoxes) { bw.write(u); bw.newLine(); }
+            for (String u : allBoxes) {
+                bw.write(u);
+                bw.newLine();
+            }
 
             StringBuilder sb = new StringBuilder();
-            sb.append(currentTrainer.getName()).append(",").append(password);
+            sb.append(currentTrainer.getName()).append(",").append(currentTrainer.getPassword());
             for (Pokemon p : currentTrainer.getBox()) {
                 sb.append(",").append(p.getName());
             }

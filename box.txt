@@ -1,6 +1,1 @@
-Prueba1Caja,Caterpie
-PruebaCaja2,1,Caterpie
-PruebaCaja3,1,Caterpie
-PruebaCaja3,1,Caterpie
-PruebaCaja4,1,Bulbasaur
-Samuel,Samuel,Caterpie
+Samuel,1234
