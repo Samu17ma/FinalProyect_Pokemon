@@ -1,10 +1,1 @@
-hola,1234,Charmander
-a,a,Bulbasaur
-daniel,1234,Bulbasaur
-s,s,Charmeleon
-Prueba1Caja,Prueba1Caja,Charmander
-PruebaCaja2,1,Charmander
-PruebaCaja3,1,Charmander
-PruebaCaja3,1,Charmander
-PruebaCaja4,1,Caterpie
-Samuel,Samuel,Bulbasaur
+Samuel,1234,Bulbasaur,Caterpie

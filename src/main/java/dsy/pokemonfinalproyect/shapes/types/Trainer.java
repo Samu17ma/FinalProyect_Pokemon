@@ -5,15 +5,25 @@ import java.util.List;
 
 public class Trainer {
     private String name;
+    private String password;
     private List<Pokemon> team;
     private List<Item> inventory;
     private List<Pokemon> box;
 
-    public Trainer(String name) {
+    public Trainer(String name, String password) {
         this.name = name;
+        this.password = password;
         this.team = new ArrayList<>();
         this.box = new ArrayList<>();
         this.inventory = new ArrayList<>();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setName(String name) {

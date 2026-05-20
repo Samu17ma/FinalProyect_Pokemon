@@ -8,20 +8,20 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.SaveControler">
-            <children>
-                <Text layoutX="502.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer Save" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="510.0390625" AnchorPane.topAnchor="123.2265625">
-                    <font>
-                        <Font name="Times New Roman Bold" size="48.0" />
-                    </font>
-                </Text>
+    <children>
+        <Text layoutX="502.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer Save" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="510.0390625" AnchorPane.topAnchor="123.2265625">
+            <font>
+                <Font name="Times New Roman Bold" size="48.0" />
+            </font>
+        </Text>
 
-                <HBox alignment="CENTER" spacing="15" />
-                 <Button fx:id="btn_saveButton" layoutX="539.0" layoutY="369.0" onAction="#onSaveButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Save" />
-      <Button fx:id="btn_dontSave" layoutX="681.0" layoutY="369.0" onAction="#handleBack" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Don't save" />
-      <Label layoutX="484.0" layoutY="319.0" text="Are you sure you want to save?">
-         <font>
-            <Font name="Times New Roman" size="24.0" />
-         </font>
-      </Label>
-            </children>
+        <HBox alignment="CENTER" spacing="15" />
+        <Button fx:id="btn_saveButton" layoutX="539.0" layoutY="369.0" onAction="#onSaveButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Save" />
+        <Button fx:id="btn_dontSave" layoutX="681.0" layoutY="369.0" onAction="#handleBack" style="-fx-background-color: #D32F2F; -fx-text-fill: white; -fx-font-weight: bold;" text="Don't save" />
+        <Label layoutX="484.0" layoutY="319.0" text="Are you sure you want to save?">
+            <font>
+                <Font name="Times New Roman" size="24.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

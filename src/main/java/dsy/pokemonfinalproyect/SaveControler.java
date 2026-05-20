@@ -18,21 +18,8 @@ public class SaveControler {
 
     @FXML
     private void onSaveButtonClick(ActionEvent event) {
-        try (BufferedReader br = new BufferedReader(new FileReader("users.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-
-                if (data[0].equals(Game.currentTrainer.getName())) {
-                    Game.saveCurrentTrainerState(data[1]);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (Game.currentTrainer != null) {
+            Game.saveCurrentTrainerState();
         }
 
         try {
