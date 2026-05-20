@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+
+<VBox fx:id="optionsRoot" alignment="CENTER" spacing="25.0" prefHeight="720.0" prefWidth="1280.0"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dsy.pokemonfinalproyect.OptionsController"
+      style="-fx-background-color: #2c3e50;">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+    </padding>
+
+    <Label fx:id="lblTitle" text="GAME OPTIONS" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+    <GridPane vgap="20" hgap="30" alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 30; -fx-background-radius: 10;">
+        <Label fx:id="lblVolume" text="Volume Level:" style="-fx-text-fill: white; -fx-font-size: 16px;"/>
+        <Slider fx:id="volumeSlider" min="0" max="100" value="50" showTickLabels="true" showTickMarks="true" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label fx:id="lblMute" text="Mute All Audio:" style="-fx-text-fill: white; -fx-font-size: 16px;" GridPane.rowIndex="1"/>
+        <CheckBox fx:id="muteCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label fx:id="lblDark" text="Dark Mode UI:" style="-fx-text-fill: white; -fx-font-size: 16px;" GridPane.rowIndex="2"/>
+        <CheckBox fx:id="darkModeCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label fx:id="lblWindow" text="Window Mode:" style="-fx-text-fill: white; -fx-font-size: 16px;" GridPane.rowIndex="3"/>
+        <ChoiceBox fx:id="windowModeChoice" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <Button text="Save &amp; Back" onAction="#onSaveButtonClick"
+            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-padding: 12 30 12 30; -fx-background-radius: 5;"/>
+</VBox>

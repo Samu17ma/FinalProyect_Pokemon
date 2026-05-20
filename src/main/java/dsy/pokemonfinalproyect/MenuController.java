@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ public class MenuController {
     @FXML
     private Label lbl_trainerId;
 
+    @FXML
+    private AnchorPane menuRoot;
     @FXML
     private Button btn_Inventory;
 
@@ -55,6 +58,11 @@ public class MenuController {
 
     @FXML
     public void initialize() {
+        if (OptionsController.isDarkMode) {
+            menuRoot.setStyle("-fx-background-color: #121212;");
+        } else {
+            menuRoot.setStyle("-fx-background-color: #ffffff;");
+        }
         if (Game.currentTrainer != null) {
 
             lbl_trainerId.setText("Trainer: " + Game.currentTrainer.getName());
@@ -66,6 +74,20 @@ public class MenuController {
                 lbl_pokemon.setText("First pokemon -> None");
             }
         }
+        applyWindowMode(btn_Exit);
+    }
+    private void applyWindowMode(Node nodeFromScene) {
+        javafx.application.Platform.runLater(() -> {
+            if (nodeFromScene.getScene() != null && nodeFromScene.getScene().getWindow() != null) {
+                Stage stage = (Stage) nodeFromScene.getScene().getWindow();
+
+                if (OptionsController.windowMode.equalsIgnoreCase("Fullscreen")) {
+                    stage.setFullScreen(true);
+                } else {
+                    stage.setFullScreen(false);
+                }
+            }
+        });
     }
 
     @FXML
@@ -120,13 +142,12 @@ public class MenuController {
     @FXML
     protected void saveTrainer(ActionEvent event) {
         try {
-            // This loads your setting layout when clicking the main menu Options button
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveTrainer-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            System.err.println("Error changing window to option-view.fxml: " + e.getMessage());
+            System.err.println("Error opening options window: " + e.getMessage());
             e.printStackTrace();
         }
     }
