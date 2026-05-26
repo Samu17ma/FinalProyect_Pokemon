@@ -16,22 +16,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuController {
-    @FXML
-    public Button btn_Exit;
-
-    @FXML
-    private Label lbl_trainerId;
-
-    @FXML
-    private AnchorPane menuRoot;
-    @FXML
-    private Button btn_Inventory;
-
-    @FXML
-    private Label lbl_pokemon;
-
-    @FXML
-    private Button btn_CreateTeam;
+    @FXML public Button btn_Exit;
+    @FXML private Label lbl_trainerId;
+    @FXML private AnchorPane menuRoot;
+    @FXML private Button btn_Inventory;
+    @FXML private Label lbl_pokemon;
+    @FXML private Button btn_CreateTeam;
+    @FXML private Button btn_Combact;
 
     public void setDisplayName(String userName) {
         lbl_trainerId.setText(userName);
@@ -118,7 +109,7 @@ public class MenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("combact-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-            Stage stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            Stage stage = (Stage) btn_Combact.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -128,7 +119,6 @@ public class MenuController {
     @FXML
     protected void onOptionsButtonClick(ActionEvent event) {
         try {
-            // This loads your setting layout when clicking the main menu Options button
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
