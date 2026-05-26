@@ -23,6 +23,7 @@ public class MenuController {
     @FXML private Label lbl_pokemon;
     @FXML private Button btn_CreateTeam;
     @FXML private Button btn_Combact;
+    @FXML private Button btn_SaveGame;
 
     public void setDisplayName(String userName) {
         lbl_trainerId.setText(userName);
@@ -67,6 +68,7 @@ public class MenuController {
         }
         applyWindowMode(btn_Exit);
     }
+
     private void applyWindowMode(Node nodeFromScene) {
         javafx.application.Platform.runLater(() -> {
             if (nodeFromScene.getScene() != null && nodeFromScene.getScene().getWindow() != null) {
@@ -87,7 +89,7 @@ public class MenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("createTeam-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-            Stage stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
+            Stage stage = (Stage) btn_CreateTeam.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -103,8 +105,6 @@ public class MenuController {
 
         Battle currentBattle = new Battle(myPoke, wild);
 
-        // Charge Combact FXML
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("combact-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -116,6 +116,7 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
     @FXML
     protected void onOptionsButtonClick(ActionEvent event) {
         try {
@@ -132,9 +133,9 @@ public class MenuController {
     @FXML
     protected void saveTrainer(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveTrainer-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) btn_SaveGame.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
             System.err.println("Error opening options window: " + e.getMessage());
