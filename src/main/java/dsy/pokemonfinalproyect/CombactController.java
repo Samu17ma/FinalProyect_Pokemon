@@ -1,6 +1,7 @@
 package dsy.pokemonfinalproyect;
 
 import dsy.pokemonfinalproyect.shapes.types.Game;
+import dsy.pokemonfinalproyect.MenuController;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ public class CombactController {
     private Pokemon pokemonTrainer = Game.currentTrainer.getTeam().get(index);
     private Random random = new Random();
     private Pokemon rivalPokemon = Game.existingPokemons.get(random.nextInt(151) + 1);
+    private boolean healLast = false;
 
     @FXML
     private void flee(ActionEvent actionEvent) {
@@ -39,28 +41,36 @@ public class CombactController {
         }
     }
 
+    @FXML
     private void pokemonAttack(ActionEvent actionEvent){
         if(pokemonTrainer.getHp() > 0) {
             pokemonTrainer.attackPokemon(rivalPokemon);
             if(rivalPokemon.getHp() > 0) {
                 rivalPokemon.attackPokemon(pokemonTrainer);
-                if (pokemonTrainer.getHp() < 0) {
-                    flee(actionEvent);
-                }
             } else {
                 rivalPokemon.setHp(rivalPokemon.getMaxHp());
-                Game.currentTrainer.addBox(rivalPokemon);
+                if (Game.currentTrainer.getTeam().stream().count()<6){
+                    Game.currentTrainer.addPokemon(rivalPokemon);
+                } else {
+                    Game.currentTrainer.addBox(rivalPokemon);
+                }
                 flee(actionEvent);
             }
         } else  {
             if(Game.currentTrainer.getTeam().stream().count() > index+1) {
                 index++;
             }
-            flee(actionEvent);
+            MenuController menu = new MenuController();
+            menu.startCombact(actionEvent);
         }
+        healLast = true;
     }
 
+    @FXML
     private void heal(ActionEvent actionEvent) {
-        pokemonTrainer.healPokemon(random.nextInt(151) + 1 + rivalPokemon.getAttack());
+        if (healLast) {
+            pokemonTrainer.healPokemon(random.nextInt(51) + 1);
+            healLast = false;
+        }
     }
 }

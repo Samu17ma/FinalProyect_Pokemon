@@ -86,21 +86,29 @@ public class MenuController {
     public void startCombact(ActionEvent actionEvent) {
         Pokemon wild = Game.generateWildPokemon();
 
-        Pokemon myPoke = Game.currentTrainer.getTeam().get(0);
+        Pokemon myPoke;
+        int i = 0;
 
-        Battle currentBattle = new Battle(myPoke, wild);
+        do {
+            myPoke = Game.currentTrainer.getTeam().get(i);
+            i++;
+        } while (myPoke.getHp()>0 && i<6);
 
-        // Charge Combact FXML
+        if(i<6) {
+            Battle currentBattle = new Battle(myPoke, wild);
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("combact-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
+            // Charge Combact FXML
 
-            Stage stage = (Stage) ((Button)actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("combact-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+
+                Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     @FXML

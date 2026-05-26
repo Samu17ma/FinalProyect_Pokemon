@@ -111,7 +111,7 @@ public class Pokemon {
     }
 
     public void attackPokemon(Pokemon objetive) {
-        objetive.setHp(objetive.getHp()-(attack*level)/defense);
+        objetive.setHp(objetive.getHp()-(attack*level)-(objetive.getDefense()*objetive.getLevel())/2);
     }
 
     public void healPokemon(int cant) {
