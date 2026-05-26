@@ -42,14 +42,18 @@ public class Battle {
 
     public boolean attemptEscape() {
         Random rand = new Random();
+
+        boolean result = false;
+
         if (rand.nextBoolean()) {
             System.out.println("You escaped safely!");
             battleOver = true;
-            return true;
+            result = true;
         }
         System.out.println("You couldn't escape!");
         enemyTurn();
-        return false;
+
+        return result;
     }
 
     private int calculateDamage(Pokemon attacker, Pokemon defender) {
