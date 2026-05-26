@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.CombactController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.CombactController">
    <children>
       <Text layoutX="502.0" layoutY="83.0" text="COMBACT!">
          <font>
             <Font name="Times New Roman Bold" size="48.0" />
          </font>
       </Text>
+      <Button fx:id="btn_flee" onAction="#flee" layoutX="163.0" layoutY="348.0" mnemonicParsing="false" text="Flee" />
+      <Button fx:id="btn_attack" onAction="#pokemonAttack" layoutX="229.0" layoutY="348.0" mnemonicParsing="false" text="Attack" />
+      <Button fx:id="btn_heal" onAction="#heal" layoutX="300.0" layoutY="348.0" mnemonicParsing="false" text="heal" />
+      <Text fx:id="PKTrainer" layoutX="182.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TrainerPM" wrappingWidth="106.13671875" />
+      <Text layoutX="671.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EnnemyPM" wrappingWidth="140.13671875" />
+      <Text layoutX="182.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HPTrainer" wrappingWidth="106.13671875" />
+      <Text layoutX="671.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HPEnnemy" wrappingWidth="106.13671875" />
    </children>
 </AnchorPane>
