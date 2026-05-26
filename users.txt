@@ -1,1 +1,1 @@
-Samuel,1234,Bulbasaur,Caterpie
+Samuel,1234,Bulbasaur,Caterpie,Poliwag,Charmander
