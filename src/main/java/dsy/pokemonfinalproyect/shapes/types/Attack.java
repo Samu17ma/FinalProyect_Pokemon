@@ -6,6 +6,7 @@ import dsy.pokemonfinalproyect.shapes.Type;
 /**
  * Class to define types and information of attacks
  * @author dantorcom
+ * @author Samuel
  */
 
 public class Attack implements IAttackable {
@@ -16,7 +17,7 @@ public class Attack implements IAttackable {
     /**
      * Constructor with parameters
      * @param name A String with the attack name
-     * @param damage A int with the attack damage
+     * @param damage An int with the attack damage
      * @param type A Type with the type of the attack
      */
 
