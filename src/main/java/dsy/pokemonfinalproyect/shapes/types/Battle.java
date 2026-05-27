@@ -57,7 +57,7 @@ public class Battle {
     }
 
     private int calculateDamage(Pokemon attacker, Pokemon defender) {
-        int dmg = attacker.getAttack() - (defender.getDefense() / 2);
+        int dmg = (attacker.getAttack()*attacker.getLevel()) / defender.getDefense();
         return Math.max(1, dmg);
     }
 
