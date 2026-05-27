@@ -15,9 +15,9 @@ public class Attack implements IAttackable {
 
     /**
      * Constructor with parameters
-     * @param name
-     * @param damage
-     * @param type
+     * @param name A String with the attack name
+     * @param damage A int with the attack damage
+     * @param type A Type with the type of the attack
      */
 
     public Attack(String name, int damage, Type type) {
