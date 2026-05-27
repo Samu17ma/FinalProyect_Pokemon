@@ -8,17 +8,32 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Class to contains the main structure and logic of the project
+ * @author Samuel
+ * @author yassine
+ * @author dantorcom
+ */
+
 public class Game {
     static final String usersFile = "users.txt";
     static final String usersBoxes = "box.txt";
     public static List<Trainer> users = new ArrayList<>();
     public static List<Pokemon> existingPokemons = new ArrayList<>();
-
     public static Trainer currentTrainer;
+
+    /**
+     * Method to start the load of the project
+     */
 
     public static void loadGame() {
         existingPokemons = loadPokemonsFromFile();
     }
+
+    /**
+     * Method to load all Pokémon from the file pokemons.txt
+     * @return A List containing all Pokémon loaded from the file
+     */
 
     public static List<Pokemon> loadPokemonsFromFile() {
         List<Pokemon> pokemonList = new ArrayList<>();
@@ -49,6 +64,13 @@ public class Game {
         } catch (IOException e) { e.printStackTrace(); }
         return pokemonList;
     }
+
+    /**
+     * Method to confirm a successful login using users.txt
+     * @param username A String who contains the username entered as a parameter
+     * @param password A String who contains the password entered as a parameter
+     * @return A boolean that communicates if the login was successfully or not
+     */
 
     public static boolean validateLogin(String username, String password) {
         File file = new File(usersFile);
@@ -102,6 +124,14 @@ public class Game {
         return result;
     }
 
+    /**
+     * A methot to register a new user (Trainer) on the users.txt file
+     * @param username A String who contains the username entered as a parameter
+     * @param password A String who contains the password entered as a parameter
+     * @param firstPokemon A String with the name of on of the three Pokémon you
+     *                     can choose at the beginning
+     */
+
     public static void registerUserToFile(String username, String password, String firstPokemon) {
         File file = new File(usersFile);
         String finalUsername = username;
@@ -142,6 +172,10 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    /**
+     * A methot to save all your progress
+     */
 
     public static void saveCurrentTrainerState() {
         if (currentTrainer == null) return;
@@ -204,6 +238,11 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    /**
+     * A method to give a random Pokémon when the combact starts
+     * @return A Pokémon who will attacks you
+     */
 
     public static Pokemon generateWildPokemon() {
         Random rand = new Random();
