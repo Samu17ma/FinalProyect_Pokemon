@@ -66,6 +66,11 @@ public class Pokemon {
         this.name = name;
     }
 
+    /**
+     * Return's the Pokémon's type
+     * @return Pokémon's type
+     */
+
     public Type getType() {
         return type;
     }

@@ -32,6 +32,7 @@ public class Game {
 
     /**
      * Method to load all Pokémon from the file pokemons.txt
+     * @return A List containing all Pokémon loaded from the file
      */
 
     public static List<Pokemon> loadPokemonsFromFile() {

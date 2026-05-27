@@ -13,7 +13,7 @@ public class Item implements IUsable {
 
     /**
      * A method that will be used in the future to make an item usable
-     * @param pokemon
+     * @param pokemon The Pokémon that will use the item
      */
 
     @Override
