@@ -1,5 +1,9 @@
 package dsy.pokemonfinalproyect.shapes;
 
+/**
+ * Enum representing the different elemental types of Pokémon
+ */
+
 public enum Type {
     NORMAL,
     FIRE,
