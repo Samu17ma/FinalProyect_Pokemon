@@ -33,7 +33,7 @@ public class CombactController implements IScreeenSettings {
     @FXML private Text txtTrainerHP;
     @FXML private ProgressBar progressTrainerHP;
     @FXML private AnchorPane combactRoot;
-    @FXML private Button btn_Back;
+
 
     @FXML private Text txtEnemyPokemon;
     @FXML private Text txtEnemyHP;
