@@ -1,5 +1,6 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.IScreeenSettings;
 import dsy.pokemonfinalproyect.shapes.types.Game;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import javafx.event.ActionEvent;
@@ -10,10 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -21,13 +19,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class TeamController {
+public class TeamController implements IScreeenSettings {
+    @FXML private AnchorPane teamViewRoot;
     @FXML private Button txt_goBack;
     @FXML private GridPane grid_pokemons;
 
     @FXML
     public void initialize() {
         grid_pokemons.getChildren().clear();
+        IScreeenSettings.syncGameSettings(teamViewRoot, txt_goBack);
 
         if (Game.currentTrainer != null) {
             List<Pokemon> team = Game.currentTrainer.getTeam();

@@ -1,5 +1,6 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.IScreeenSettings;
 import dsy.pokemonfinalproyect.shapes.types.Game;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import javafx.collections.FXCollections;
@@ -7,23 +8,29 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CreateTeamController {
+public class CreateTeamController implements IScreeenSettings {
 
     @FXML private ListView<String> listBox;
     @FXML private ListView<String> listTeam;
     @FXML private Button btn_goBack;
+    @FXML private AnchorPane teamRoot;
+
+
 
     @FXML
     public void initialize() {
         refreshLists();
+        IScreeenSettings.syncGameSettings(teamRoot, btn_goBack);
     }
 
     private void refreshLists() {

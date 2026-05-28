@@ -1,5 +1,6 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.IScreeenSettings;
 import dsy.pokemonfinalproyect.shapes.types.Battle;
 import dsy.pokemonfinalproyect.shapes.types.Game;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuController {
+public class MenuController implements IScreeenSettings {
     @FXML public Button btn_Exit;
     @FXML private Label lbl_trainerId;
     @FXML private AnchorPane menuRoot;
@@ -38,6 +39,7 @@ public class MenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("team-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
+
             Stage stage = (Stage) btn_Inventory.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -50,6 +52,7 @@ public class MenuController {
 
     @FXML
     public void initialize() {
+        IScreeenSettings.syncGameSettings(menuRoot, btn_Exit);
         if (OptionsController.isDarkMode) {
             menuRoot.setStyle("-fx-background-color: #121212;");
         } else {

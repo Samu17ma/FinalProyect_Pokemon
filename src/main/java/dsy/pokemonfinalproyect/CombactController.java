@@ -1,5 +1,6 @@
 package dsy.pokemonfinalproyect;
 
+import dsy.pokemonfinalproyect.shapes.IScreeenSettings;
 import dsy.pokemonfinalproyect.shapes.types.Game;
 import dsy.pokemonfinalproyect.shapes.types.Pokemon;
 import dsy.pokemonfinalproyect.shapes.types.Battle;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,7 +20,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Random;
 
-public class CombactController {
+public class CombactController implements IScreeenSettings {
 
     private int index = 0;
     private Pokemon pokemonTrainer = Game.currentTrainer.getTeam().get(index);
@@ -30,6 +32,8 @@ public class CombactController {
     @FXML private Text txtTrainerPokemon;
     @FXML private Text txtTrainerHP;
     @FXML private ProgressBar progressTrainerHP;
+    @FXML private AnchorPane combactRoot;
+    @FXML private Button btn_Back;
 
     @FXML private Text txtEnemyPokemon;
     @FXML private Text txtEnemyHP;
@@ -42,6 +46,7 @@ public class CombactController {
 
     @FXML
     public void initialize() {
+        IScreeenSettings.syncGameSettings(combactRoot, btn_flee);
         currentBattle = new Battle(pokemonTrainer, rivalPokemon);
         updateUI();
         txtConsole.appendText("A wild " + rivalPokemon.getName() + " appeared!\n");

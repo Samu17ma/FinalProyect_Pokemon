@@ -1,1 +1,2 @@
-Samuel,1234,Bulbasaur,Caterpie,Poliwag,Charmander,Electabuzz
+Samuel,1234,Bulbasaur,Caterpie,Poliwag,Charmander
+hola,1234,Charmander

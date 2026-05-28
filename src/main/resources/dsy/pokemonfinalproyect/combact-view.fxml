@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.CombactController">
+<AnchorPane fx:id="combactRoot" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dsy.pokemonfinalproyect.CombactController">
    <children>
       <Text layoutX="502.0" layoutY="83.0" text="BATTLE!">
          <font>
